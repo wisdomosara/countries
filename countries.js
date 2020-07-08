@@ -7,7 +7,8 @@ const container = document.querySelector("main");
   .then(response => response.json())
   .then(data => {
     data.forEach(element => {  
-        container.innerHTML += `
+        let countries = document.createElement("div")
+        countries.innerHTML += `
             <div class="country-div">
                 <div class="img-div">
                     <img src=${element.flag} width="100%" height="100%" >
@@ -20,6 +21,7 @@ const container = document.querySelector("main");
                 </div>
             </div>
       `
+       container.appendChild(countries)
     });
     
   })
