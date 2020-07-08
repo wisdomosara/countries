@@ -96,3 +96,7 @@ selectbox.addEventListener("change", function (e) {
     })
 }
 
+darkmode.addEventlistener("click", function(){
+ document.querySelector("body").background = "black"
+ document.querySelector("body").color = "white"
+})
