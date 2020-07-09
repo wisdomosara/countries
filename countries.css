@@ -12,6 +12,9 @@ nav{
     margin-bottom: 50px;
     align-items: center;
 }
+.darkmode{
+    cursor: pointer;
+}
 .searchers{
     display: flex;
     justify-content: space-between;
@@ -20,12 +23,13 @@ nav{
     margin-bottom: 50px;
 }
 .search-bar{
-    width:300px;
+    width:400px;
     background-color: white;
     padding: 10px 20px;
     margin-bottom: 20px;
 }
 .search-input{
+    width: 23vw;
     margin-left: 30px;
     border-style: none;
     outline: none;
@@ -36,15 +40,15 @@ nav{
     margin-bottom: 20px;
 }
 select{
-    width: 150px;
-    border-style: none;
-    outline: none;
-}
-select option{
-    width: 50px;
     background-color: white;
     border-style: none;
     outline: none;
+}
+option{
+    background-color: white;
+    border-style: none;
+    outline: none;
+    color: black;
 }
 main{
     display: flex;
@@ -56,20 +60,38 @@ img{
     height: 100%;
     object-fit: cover;
 }
+.darkicon{
+    color: white !important;
+}
 .country-div{
     width: 300px;
-    height: 400px;
     box-sizing: border-box;
+    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
     margin-bottom: 50px;
+    border-radius: 5px;
 }
 .img-div{
     width: 100%;
-    height: 50%
+    height: 200px
 }
 .country-example{
-    height: 50%;
-    padding: 20px 20px 0 20px;
+    height:150px;
+    padding: 20px 20px 40px 20px;
     background-color: white;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-
+.dark{
+    background-color: rgb(1, 39, 21) !important;
+    color:white !important
+}
+.hide{
+    display: none;
+}
+@media only screen and (max-width:576px) {
+    .search-input{
+        width: 40vw;
+        margin-left: 30px;
+        border-style: none;
+        outline: none;
+    }
+}
