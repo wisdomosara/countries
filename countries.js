@@ -15,14 +15,9 @@ darkmode.addEventListener("click", function() {
     clicked = !clicked;
     if(clicked == true) {
     body.classList.add("dark")
-    selectbar.classList.add("dark")
-selectbox.classList.add("dark")
-search.classList.add("dark")
-searchbox.classList.add("dark")
-option.classList.add("dark")
-icon.classList.add("darkicon")
+    icon.classList.add("darkicon")
 const example = document.querySelectorAll(".country-example");
-for (let g = 0; g < example.length; g++) {
+for (let g = 0; g < example.length; g++) {5
     example[g].classList.add("dark")
 }
 const country= document.querySelectorAll(".country-div");
@@ -30,15 +25,14 @@ for (let g = 0; g < country.length; g++) {
     country[g].classList.add("dark")
     country[g].style.border = "2px solid white"
 }
-nav.classList.add("dark")
+const light = document.querySelectorAll(".light");
+for (let k = 0; k < light.length; k++) {
+    light[k].classList.add("light-dark")
+}
+
 }
 else {
     body.classList.remove("dark")
-    selectbar.classList.remove("dark")
-    selectbox.classList.remove("dark")
-    search.classList.remove("dark")
-    searchbox.classList.remove("dark")
-    option.classList.remove("dark")
     icon.classList.remove("darkicon")
 const example = document.querySelectorAll(".country-example");
 for (let g = 0; g < example.length; g++) {
@@ -49,7 +43,10 @@ for (let g = 0; g < country.length; g++) {
     country[g].classList.remove("dark")
     country[g].style.border = "none"
 }
-nav.classList.remove("dark")
+const light= document.querySelectorAll(".light");
+for (let k = 0; k < light.length; k++) {
+    light[k].classList.remove("light-dark")
+}
 }
 })
 
@@ -75,48 +72,70 @@ window.onload = function() {
                         </div>
                     </div>
             `
+            allholder.addEventListener("click", function() {
+                container.classList.add("hide")
+                search.classList.add("hide")
+                selectbar.classList.add("hide");
+                let hidden = document.createElement("div");
+                hidden.className = "country-details";
+                hidden.innerHTML = `<div>
+                    <div class="back light">
+                        <h2><i class="fas fa-arrow-left"></i> Back</h2>
+                    </div>
+                    <div class="hidden-flex">
+                        <div class="hidden-flag">
+                            <img src=${element.flag} width="100%"/>
+                        </div>
+                        <div class="hidden-details">
+                            <h2>${element.name}</h2>
+                            <div class="details-flex">
+                                <div class="details-left">
+                                    <p><strong>Native Name:</strong> ${element.capital}</p>
+                                    <p><strong>Population:</strong> ${element.population}</p>
+                                    <p><strong>Region:</strong> ${element.region}</p>
+                                    <p><strong>Area:</strong> ${element.area}</p>
+                                </div>
+                                <div class="details-right">
+                                    <p><strong>Capital:</strong> ${element.capital}</p>
+                                    <p><strong>Calling code:</strong> ${element.callingCodes}</p>
+                                    <p><strong>Numeric Code:</strong> ${element.numericCode}</p>
+                                    <p><strong>Subregion:</strong> ${element.subregion}</p>
+                                </div>
+                            </div>
+                            <div class="cur">
+                                <span><strong>Currency:</strong> <span class="light">${element.currencies[0].code}</span></span> <span class="light">${element.currencies[0].name}</span> <span class="light">${element.currencies[0].symbol}</span>
+                            </div>
+                            <div class="long">
+                                <span><strong>longitude:</strong> <span class="light">${element.latlng[1]}</span></span> <span class="light">latitude: <span>${element.latlng[0]}</span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                `
+               
+                body.appendChild(hidden)
+                if(clicked == true) {
+                    const light = document.querySelectorAll(".light");
+                    for (let k = 0; k < light.length; k++) {
+                        light[k].classList.add("light-dark")
+                    }
+                }else {
+                    const light = document.querySelectorAll(".light");
+                    for (let k = 0; k < light.length; k++) {
+                        light[k].classList.remove("light-dark")
+                    }
+                }
+                document.querySelector(".back").addEventListener("click", function() {
+                    body.removeChild(hidden);
+                    container.classList.remove("hide")
+                search.classList.remove("hide")
+                selectbar.classList.remove("hide");
+                
+                })
+            })
+            
             container.appendChild(allholder)
             });
-                
-            
-                if(clicked == true) {
-                    body.classList.add("dark")
-                    selectbar.classList.add("dark")
-                    selectbox.classList.add("dark")
-                    search.classList.add("dark")
-                    searchbox.classList.add("dark")
-                    option.classList.add("dark")
-                    icon.classList.add("darkicon")
-                const example = document.querySelectorAll(".country-example");
-                for (let g = 0; g < example.length; g++) {
-                    example[g].classList.add("dark")
-                }
-                const country= document.querySelectorAll(".country-div");
-                for (let g = 0; g < country.length; g++) {
-                    country[g].classList.add("dark")
-                    country[g].style.border = "2px solid white"
-                }
-                nav.classList.add("dark")
-                }
-                else {
-                    body.classList.remove("dark")
-                    selectbar.classList.remove("dark")
-                    selectbox.classList.remove("dark")
-                    search.classList.remove("dark")
-                    searchbox.classList.remove("dark")
-                    option.classList.remove("dark")
-                    icon.classList.remove("darkicon")
-                const example = document.querySelectorAll(".country-example");
-                for (let g = 0; g < example.length; g++) {
-                    example[g].classList.remove("dark")
-                }
-                const country= document.querySelectorAll(".country-div");
-                for (let g = 0; g < country.length; g++) {
-                    country[g].classList.remove("dark")
-                    country[g].style.border = "none"
-                }
-                nav.classList.remove("dark")
-                }
                 
             
         })
@@ -148,48 +167,104 @@ window.onload = function() {
                 </div>
             </div>
       `
+      filter.addEventListener("click", function() {
+        container.classList.add("hide")
+        search.classList.add("hide")
+        selectbar.classList.add("hide");
+        let hidden = document.createElement("div");
+        hidden.className = "country-details";
+        hidden.innerHTML = `<div>
+            <div class="back light">
+                <h2><i class="fas fa-arrow-left"></i> Back</h2>
+            </div>
+            <div class="hidden-flex">
+                <div class="hidden-flag">
+                    <img src=${element.flag} width="100%"/>
+                </div>
+                <div class="hidden-details">
+                    <h2>${element.name}</h2>
+                    <div class="details-flex">
+                        <div class="details-left">
+                            <p><strong>Native Name:</strong> ${element.capital}</p>
+                            <p><strong>Population:</strong> ${element.population}</p>
+                            <p><strong>Region:</strong> ${element.region}</p>
+                            <p><strong>Area:</strong> ${element.area}</p>
+                        </div>
+                        <div class="details-right">
+                            <p><strong>Capital:</strong> ${element.capital}</p>
+                            <p><strong>Calling code:</strong> ${element.callingCodes}</p>
+                            <p><strong>Numeric Code:</strong> ${element.numericCode}</p>
+                            <p><strong>Subregion:</strong> ${element.subregion}</p>
+                        </div>
+                    </div>
+                    <div class="cur">
+                        <span><strong>Currency:</strong> <span class="light">${element.currencies[0].code}</span></span> <span class="light">${element.currencies[0].name}</span> <span class="light">${element.currencies[0].symbol}</span>
+                    </div>
+                    <div class="long">
+                        <span><strong>longitude:</strong> <span class="light">${element.latlng[1]}</span></span> <span class="light">latitude: <span>${element.latlng[0]}</span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        `
+        body.appendChild(hidden)
+        if(clicked == true) {
+            const light = document.querySelectorAll(".light");
+            for (let k = 0; k < light.length; k++) {
+                light[k].classList.add("light-dark")
+            }
+        }else {
+            const light = document.querySelectorAll(".light");
+            for (let k = 0; k < light.length; k++) {
+                light[k].classList.remove("light-dark")
+            }
+        }
+        document.querySelector(".back").addEventListener("click", function() {
+            body.removeChild(hidden);
+            container.classList.remove("hide")
+        search.classList.remove("hide")
+        selectbar.classList.remove("hide");
+
+        })
+    })
       container.appendChild(filter)
     });
     
+    if(clicked == true) {
+        body.classList.add("dark")
+        icon.classList.add("darkicon")
+    const example = document.querySelectorAll(".country-example");
+    for (let g = 0; g < example.length; g++) {
+        example[g].classList.add("dark")
+    }
+    const country= document.querySelectorAll(".country-div");
+    for (let g = 0; g < country.length; g++) {
+        country[g].classList.add("dark")
+        country[g].style.border = "2px solid white"
+    }
+    const light = document.querySelectorAll(".light");
+    for (let k = 0; k < light.length; k++) {
+        light[k].classList.add("light-dark")
+    }
     
-        if(clicked == true) {
-            body.classList.add("dark")
-            selectbar.classList.add("dark")
-            selectbox.classList.add("dark")
-            search.classList.add("dark")
-            searchbox.classList.add("dark")
-            option.classList.add("dark")
-            icon.classList.add("darkicon")
-        const example = document.querySelectorAll(".country-example");
-        for (let g = 0; g < example.length; g++) {
-            example[g].classList.add("dark")
-        }
-        const country= document.querySelectorAll(".country-div");
-        for (let g = 0; g < country.length; g++) {
-            country[g].classList.add("dark")
-            country[g].style.border = "2px solid white"
-        }
-        nav.classList.add("dark")
-        }
-        else {
-            body.classList.remove("dark")
-            selectbar.classList.remove("dark")
-            selectbox.classList.remove("dark")
-            search.classList.remove("dark")
-            searchbox.classList.remove("dark")
-            option.classList.remove("dark")
-            icon.classList.remove("darkicon")
-        const example = document.querySelectorAll(".country-example");
-        for (let g = 0; g < example.length; g++) {
-            example[g].classList.remove("dark")
-        }
-        const country= document.querySelectorAll(".country-div");
-        for (let g = 0; g < country.length; g++) {
-            country[g].classList.remove("dark")
-            country[g].style.border = "none"
-        }
-        nav.classList.remove("dark")
-        }
+    }
+    else {
+        body.classList.remove("dark")
+        icon.classList.remove("darkicon")
+    const example = document.querySelectorAll(".country-example");
+    for (let g = 0; g < example.length; g++) {
+        example[g].classList.remove("dark")
+    }
+    const country= document.querySelectorAll(".country-div");
+    for (let g = 0; g < country.length; g++) {
+        country[g].classList.remove("dark")
+        country[g].style.border = "none"
+    }
+    const light= document.querySelectorAll(".light");
+    for (let k = 0; k < light.length; k++) {
+        light[k].classList.remove("light-dark")
+    }
+    }
         
   })
 }
@@ -221,15 +296,70 @@ selectbox.addEventListener("change", function (e) {
                 </div>
             </div>
       `
+      region.addEventListener("click", function() {
+        container.classList.add("hide")
+        search.classList.add("hide")
+        selectbar.classList.add("hide");
+        let hidden = document.createElement("div");
+        hidden.className = "country-details";
+        hidden.innerHTML = `<div>
+            <div class="back light">
+                <h2><i class="fas fa-arrow-left"></i> Back</h2>
+            </div>
+            <div class="hidden-flex">
+                <div class="hidden-flag">
+                    <img src=${element.flag} width="100%"/>
+                </div>
+                <div class="hidden-details">
+                    <h2>${element.name}</h2>
+                    <div class="details-flex">
+                        <div class="details-left">
+                            <p><strong>Native Name:</strong> ${element.capital}</p>
+                            <p><strong>Population:</strong> ${element.population}</p>
+                            <p><strong>Region:</strong> ${element.region}</p>
+                            <p><strong>Area:</strong> ${element.area}</p>
+                        </div>
+                        <div class="details-right">
+                            <p><strong>Capital:</strong> ${element.capital}</p>
+                            <p><strong>Calling code:</strong> ${element.callingCodes}</p>
+                            <p><strong>Numeric Code:</strong> ${element.numericCode}</p>
+                            <p><strong>Subregion:</strong> ${element.subregion}</p>
+                        </div>
+                    </div>
+                    <div class="cur">
+                        <span><strong>Currency:</strong> <span class="light">${element.currencies[0].code}</span></span> <span class="light">${element.currencies[0].name}</span> <span class="light">${element.currencies[0].symbol}</span>
+                    </div>
+                    <div class="long">
+                        <span><strong>longitude:</strong> <span class="light">${element.latlng[1]}</span></span> <span class="light">latitude: <span>${element.latlng[0]}</span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        `
+        body.appendChild(hidden)
+        if(clicked == true) {
+            const light = document.querySelectorAll(".light");
+            for (let k = 0; k < light.length; k++) {
+                light[k].classList.add("light-dark")
+            }
+        }else {
+            const light = document.querySelectorAll(".light");
+            for (let k = 0; k < light.length; k++) {
+                light[k].classList.remove("light-dark")
+            }
+        }
+        document.querySelector(".back").addEventListener("click", function() {
+            body.removeChild(hidden);
+            container.classList.remove("hide")
+        search.classList.remove("hide")
+        selectbar.classList.remove("hide");
+
+        })
+    })
       container.appendChild(region)
     });
     if(clicked == true) {
         body.classList.add("dark")
-        selectbar.classList.add("dark")
-        selectbox.classList.add("dark")
-        search.classList.add("dark")
-        searchbox.classList.add("dark")
-        option.classList.add("dark")
         icon.classList.add("darkicon")
     const example = document.querySelectorAll(".country-example");
     for (let g = 0; g < example.length; g++) {
@@ -240,15 +370,14 @@ selectbox.addEventListener("change", function (e) {
         country[g].classList.add("dark")
         country[g].style.border = "2px solid white"
     }
-    nav.classList.add("dark")
+    const light = document.querySelectorAll(".light");
+    for (let k = 0; k < light.length; k++) {
+        light[k].classList.add("light-dark")
+    }
+    
     }
     else {
         body.classList.remove("dark")
-        selectbar.classList.remove("dark")
-        selectbox.classList.remove("dark")
-        search.classList.remove("dark")
-        searchbox.classList.remove("dark")
-        option.classList.remove("dark")
         icon.classList.remove("darkicon")
     const example = document.querySelectorAll(".country-example");
     for (let g = 0; g < example.length; g++) {
@@ -259,10 +388,15 @@ selectbox.addEventListener("change", function (e) {
         country[g].classList.remove("dark")
         country[g].style.border = "none"
     }
-    nav.classList.remove("dark")
+    const light= document.querySelectorAll(".light");
+    for (let k = 0; k < light.length; k++) {
+        light[k].classList.remove("light-dark")
+    }
     }
   })
     })
+
+
 
 }
 

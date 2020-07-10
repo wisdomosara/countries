@@ -8,9 +8,19 @@ nav{
     display: flex;
     justify-content: space-between;
     padding: 2px 30px;
-    background-color: white;
     margin-bottom: 50px;
     align-items: center;
+}
+.light{
+    background-color: white
+}
+.hidden-details .light{
+    margin-left:1vw;
+    padding:5px 10px;
+}
+.light-dark{
+    background-color: rgba(2, 61, 33, 0.63) !important;
+    color: white !important
 }
 .darkmode{
     cursor: pointer;
@@ -23,16 +33,18 @@ nav{
     margin-bottom: 50px;
 }
 .search-bar{
-    width:400px;
+    width:370px;
     background-color: white;
-    padding: 10px 20px;
+    padding: 10px 0 10px 10px;
     margin-bottom: 20px;
 }
 .search-input{
-    width: 23vw;
+    width: 310px;
     margin-left: 30px;
     border-style: none;
     outline: none;
+    font-weight: bold;
+    height:30px;
 }
 .select-bar{
     background-color: white;
@@ -40,6 +52,7 @@ nav{
     margin-bottom: 20px;
 }
 select{
+    height: 30px;
     background-color: white;
     border-style: none;
     outline: none;
@@ -87,11 +100,69 @@ img{
 .hide{
     display: none;
 }
-@media only screen and (max-width:576px) {
+.hidden-flag{
+    width:35vw;
+}
+.hidden-flex{
+    display: flex;
+    justify-content: center;
+}
+.hidden-details{
+    width:30vw;
+    padding: 10px 0;
+    margin-left: 60px;
+}
+.back{
+    position: absolute;
+    transform: translateY(-50%);
+    top:120px;
+    left:4%;
+    font-size: 12px;
+    width: 70px;
+    padding: 5px 15px;
+    cursor: pointer;
+}
+.back h2{
+    margin:0;
+    padding: 0
+}
+.details-flex{
+    margin:20px 0;
+    display: flex;
+    justify-content: space-between;
+}
+.cur{
+    margin-bottom: 15px;
+}
+@media only screen and (max-width:992px) {
     .search-input{
         width: 40vw;
         margin-left: 30px;
         border-style: none;
         outline: none;
+    }
+    .hidden-flex{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 10px 40px
+    }
+    .hidden-flag{
+        width:100%
+    }
+    .hidden-details{
+        width:100%;
+        padding: 10px 0;
+        margin-left: 0 !important
+    }
+    .details-flex{
+        flex-direction: column;
+    }
+    .cur .light{
+        font-size: 11px;
+    }
+    .hidden-details .light{
+        margin-left:0.3vw;
+        padding:5px 10px;
     }
 }
