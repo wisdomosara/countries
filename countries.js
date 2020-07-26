@@ -116,15 +116,16 @@ window.onload = function() {
                 body.appendChild(hidden)
                 if(clicked == true) {
                     const light = document.querySelectorAll(".light");
-                    for (let k = 0; k < light.length; k++) {
-                        light[k].classList.add("light-dark")
+                for (let k = 0; k < light.length; k++) {
+                    light[k].classList.add("light-dark")
                     }
                 }else {
-                    const light = document.querySelectorAll(".light");
+                    const light= document.querySelectorAll(".light");
                     for (let k = 0; k < light.length; k++) {
                         light[k].classList.remove("light-dark")
                     }
                 }
+                
                 document.querySelector(".back").addEventListener("click", function() {
                     body.removeChild(hidden);
                     container.classList.remove("hide")
@@ -136,7 +137,36 @@ window.onload = function() {
             
             container.appendChild(allholder)
             });
-                
+            if(clicked == true) {
+                body.classList.add("dark")
+                icon.classList.add("darkicon")
+            const example = document.querySelectorAll(".country-example");
+            for (let g = 0; g < example.length; g++) {
+                example[g].classList.add("dark")
+            }
+            const country= document.querySelectorAll(".country-div");
+            for (let g = 0; g < country.length; g++) {
+                country[g].classList.add("dark")
+                country[g].style.border = "2px solid white"
+            }
+            const light = document.querySelectorAll(".light");
+            for (let k = 0; k < light.length; k++) {
+                light[k].classList.add("light-dark")
+            }
+        }else {
+            body.classList.remove("dark")
+                icon.classList.remove("darkicon")
+            const example = document.querySelectorAll(".country-example");
+            for (let g = 0; g < example.length; g++) {
+                example[g].classList.remove("dark")
+            }
+            const country= document.querySelectorAll(".country-div");
+            for (let g = 0; g < country.length; g++) {
+                country[g].classList.remove("dark")
+                country[g].style.border = "none"
+            }
+            
+        }
             
         })
     }
@@ -144,7 +174,8 @@ window.onload = function() {
   searchbox.addEventListener("input", function(e) {
       let name = e.target.value;
       if(name == "") {
-        getAll()
+        getAll();
+        
       } else {
           container.innerHTML = ""
       console.log(name)
